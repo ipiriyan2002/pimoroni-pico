@@ -12,15 +12,15 @@ include(pimoroni_i2c/micropython)
 include(pimoroni_bus/micropython)
 
 # Pico Graphics Essential
-include(hershey_fonts/micropython)
-include(bitmap_fonts/micropython)
-include(picographics/micropython)
+#include(hershey_fonts/micropython)
+#include(bitmap_fonts/micropython)
+#include(picographics/micropython)
 
 # Pico Graphics Extra
-include(pngdec/micropython)
-include(jpegdec/micropython)
-include(picovector/micropython)
-include(qrcode/micropython/micropython)
+#include(pngdec/micropython)
+#include(jpegdec/micropython)
+#include(picovector/micropython)
+#include(qrcode/micropython/micropython)
 
 # Sensors & Breakouts
 #include(breakout_dotmatrix/micropython)
@@ -47,14 +47,14 @@ include(qrcode/micropython/micropython)
 include(breakout_vl53l5cx/micropython)
 
 # Packs & Bases
-include(pico_unicorn/micropython)
-include(pico_scroll/micropython)
-include(pico_rgb_keypad/micropython)
-include(pico_explorer/micropython)
+#include(pico_unicorn/micropython)
+#include(pico_scroll/micropython)
+#include(pico_rgb_keypad/micropython)
+#include(pico_explorer/micropython)
 
 # LEDs & Matrices
-include(plasma/micropython)
-include(hub75/micropython)
+#include(plasma/micropython)
+#include(hub75/micropython)
 
 # Servos & Motors
 include(pwm/micropython)
@@ -83,3 +83,6 @@ include(modules_py/modules_py)
 # Must call `enable_ulab()` to enable
 include(micropython-common-ulab)
 enable_ulab()
+
+# C++ Magic Memory
+include(cppmem/micropython)
