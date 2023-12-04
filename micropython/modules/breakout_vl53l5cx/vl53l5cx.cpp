@@ -237,6 +237,7 @@ mp_obj_t VL53L5CX_get_data(mp_obj_t self_in) {
     mp_obj_t tuple_distance_mm[tuple_size];
     mp_obj_t tuple_reflectance[tuple_size];
     mp_obj_t tuple_target_status[tuple_size];
+    mp_obj_t tuple_nb_objs_detected[scale];
 
     int32_t average_distance = 0;
     int32_t average_reflectance = 0;
@@ -246,6 +247,7 @@ mp_obj_t VL53L5CX_get_data(mp_obj_t self_in) {
         tuple_distance_mm[i] = mp_obj_new_int(results->distance_mm[i]);
         tuple_reflectance[i] = mp_obj_new_int(results->reflectance[i]);
         tuple_target_status[i] = mp_obj_new_int(results->target_status[i]);
+        tuple_nb_objs_detected[i] = mp_obj_new_int(results->nb_target_detected[i]);
         average_distance += results->distance_mm[i];
         average_reflectance += results->reflectance[i];
     }
@@ -274,10 +276,11 @@ mp_obj_t VL53L5CX_get_data(mp_obj_t self_in) {
         mp_obj_new_int(tuple_size), // Number of results
         mp_obj_new_tuple(tuple_size, tuple_distance_mm), // Full distance results
         mp_obj_new_tuple(tuple_size, tuple_reflectance),  // Full reflectange results
-        mp_obj_new_tuple(tuple_size, tuple_target_status) //Target status of each zone
+        mp_obj_new_tuple(tuple_size, tuple_target_status), //Target status of each zone
+        mp_obj_new_tuple(scale, tuple_nb_objs_detected) //Number of targets detected per zone
     };
 
-    STATIC const qstr tuple_fields[] = {MP_QSTR_distance_avg, MP_QSTR_reflectance_avg, MP_QSTR_motion_indicator, MP_QSTR_results, MP_QSTR_distance, MP_QSTR_reflectance, MP_QSTR_target_status};
+    STATIC const qstr tuple_fields[] = {MP_QSTR_distance_avg, MP_QSTR_reflectance_avg, MP_QSTR_motion_indicator, MP_QSTR_results, MP_QSTR_distance, MP_QSTR_reflectance, MP_QSTR_target_status, MP_QSTR_nb_targets_detected};
 
     return mp_obj_new_attrtuple(tuple_fields, sizeof(tuple) / sizeof(mp_obj_t), tuple);
 }
