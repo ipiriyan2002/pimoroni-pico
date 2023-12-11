@@ -249,7 +249,7 @@ mp_obj_t VL53L5CX_get_data(mp_obj_t self_in) {
         tuple_reflectance[i] = mp_obj_new_int(results->reflectance[i]);
         tuple_target_status[i] = mp_obj_new_int(results->target_status[i]);
         tuple_nb_objs_detected[i] = mp_obj_new_int(results->nb_target_detected[i]);
-        tuple_range_sigma_mm = mp_obj_new_int(results->range_sigma_mm[i]);
+        tuple_range_sigma_mm[i] = mp_obj_new_int(results->range_sigma_mm[i]);
         average_distance += results->distance_mm[i];
         average_reflectance += results->reflectance[i];
     }
